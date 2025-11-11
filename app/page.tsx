@@ -19,14 +19,14 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             {/* Domain Select */}
-            <div className="w-full sm:w-[180px]"> {/* Ensure select takes full width on small screens */}
+            <div className="w-full sm:w-[180px]"> 
               <Select>
-                <SelectTrigger> {/* No need for w-[180px] here, parent div handles it */}
+                <SelectTrigger> 
                   <SelectValue placeholder="Your Domain" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value={"IT"}>Software Engineering</SelectItem>
-                  <SelectItem value={"Gastronomie"}>Gastronomy</SelectItem> {/* Corrected spelling */}
+                  <SelectItem value={"Gastronomie"}>Gastronomy</SelectItem> 
                   <SelectItem value={"Banking"}>Banking & Finance</SelectItem>
                 </SelectContent>
               </Select>

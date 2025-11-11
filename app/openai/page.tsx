@@ -1,6 +1,10 @@
+import { ChatComponent } from "@/components/chat";
+
 export default function openai() {
   return (
-    <div>hello world</div>
+    <div>
+      <ChatComponent  />
+    </div>
   
   
   )
