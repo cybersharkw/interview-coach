@@ -1,11 +1,20 @@
 'use client';
 import { useChat } from '@ai-sdk/react';
+import { DefaultChatTransport } from 'ai';
 import { useState } from 'react';
 
-export function ChatComponent() {
+
+interface ChatComponentProps {
+  apiEndpoint: string;
+}
+
+export function ChatComponent({ apiEndpoint }: ChatComponentProps) {
   const [input, setInput] = useState('');
-  const { messages, sendMessage } = useChat();
-  
+  const customTransport = new DefaultChatTransport({ api: apiEndpoint });
+  const { messages, sendMessage } = useChat({
+    transport: customTransport,
+  });
+
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
       {messages.map(message => (
@@ -17,6 +26,7 @@ export function ChatComponent() {
                 return <div key={`${message.id}-${i}`}>{part.text}</div>;
             }
           })}
+          <hr />
         </div>
       ))}
       <form

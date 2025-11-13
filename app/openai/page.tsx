@@ -3,7 +3,7 @@ import { ChatComponent } from "@/components/chat";
 export default function openai() {
   return (
     <div>
-      <ChatComponent  />
+      <ChatComponent  apiEndpoint="/api/chat/gemini/training"/>
     </div>
   
   
