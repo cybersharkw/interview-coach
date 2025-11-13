@@ -1,19 +1,34 @@
 'use client';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 
 
 interface ChatComponentProps {
   apiEndpoint: string;
 }
 
+
+
 export function ChatComponent({ apiEndpoint }: ChatComponentProps) {
   const [input, setInput] = useState('');
   const customTransport = new DefaultChatTransport({ api: apiEndpoint });
   const { messages, sendMessage } = useChat({
     transport: customTransport,
+
+
   });
+
+
+const hasInitialized = useRef(false);
+
+useEffect(() => {
+  if (!hasInitialized.current) {
+    hasInitialized.current = true;
+    sendMessage({text: "Hello! Start the conversation." });
+  }
+}, []);
 
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">

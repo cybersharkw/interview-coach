@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 
-export default function gemini() {
+export default function deepseek() {
 
   const router = useRouter()
   return (
@@ -15,14 +15,14 @@ export default function gemini() {
           </div>
           <div className="grid grid-cols-3 gap-4">
             <Card 
-              onClick={() => router.push('./gemini/training')}
+              onClick={() => router.push('./deepseek/training')}
               className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
             >
               <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">Software Engineering</CardTitle>
               <CardDescription className="text-sm text-gray-600 pt-2">This coach asks you questions especially for Software Engineering Topics</CardDescription>
             </Card>
             <Card 
-              onClick={() => router.push('./gemini/training')}
+              onClick={() => router.push('./deepseek/training')}
               className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
             >
               <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">HR</CardTitle>
@@ -37,14 +37,14 @@ export default function gemini() {
           </div>
           <div className="grid grid-cols-3 gap-4">
             <Card 
-              onClick={() => router.push('./gemini/reverseTraining')}
+              onClick={() => router.push('./deepseek/reverseTraining')}
               className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
             >
               <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">Software Engineering</CardTitle>
               <CardDescription className="text-sm text-gray-600 pt-2">This coach asks you questions especially for Software Engineering Topics</CardDescription>
             </Card>
             <Card 
-              onClick={() => router.push('./gemini/itcoach')}
+              onClick={() => router.push('./deepseek/itcoach')}
               className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
             >
               <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">HR</CardTitle>
@@ -59,14 +59,14 @@ export default function gemini() {
           </div>
           <div className="grid grid-cols-3 gap-4">
             <Card 
-              onClick={() => router.push('./gemini/test')}
+              onClick={() => router.push('./deepseek/test')}
               className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
             >
               <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">Software Engineering</CardTitle>
               <CardDescription className="text-sm text-gray-600 pt-2">This coach asks you questions especially for Software Engineering Topics</CardDescription>
             </Card>
             <Card 
-              onClick={() => router.push('./gemini/test')}
+              onClick={() => router.push('./deepseek/test')}
               className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
             >
               <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">HR</CardTitle>
