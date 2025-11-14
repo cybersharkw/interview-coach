@@ -21,17 +21,15 @@ The platform allows you to experiment with different LLMs, understand their uniq
 ## 🛠️ Tech Stack
 
 - **Frontend:** React / Next.js / Tailwind CSS  
-- **Backend:** Node.js / Express  
-- **AI Integration:** APIs for multiple LLM providers (e.g., OpenAI, Anthropic, etc.)  
-- **Other Tools:** TypeScript, Vercel (deployment), and environment-based configuration for model keys  
-
+- **AI Integration:** APIs for multiple LLM providers (e.g., OpenAI, Gemini, aws-Bedrock)  
+- **Other Tools:** TypeScript
 ---
 
 ## ⚙️ Setup & Installation
 
 
 ### API-Key
-Create an .env file and fill it out like the .evn.example
+Create an .env file and fill it out like the .evn.example. 
 
 ### install dependencies
 

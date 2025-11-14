@@ -7,11 +7,12 @@ import { useEffect, useRef, useState } from 'react';
 
 interface ChatComponentProps {
   apiEndpoint: string;
+  notStart: Boolean;
 }
 
 
 
-export function ChatComponent({ apiEndpoint }: ChatComponentProps) {
+export function ChatComponent({ apiEndpoint, notStart }: ChatComponentProps) {
   const [input, setInput] = useState('');
   const customTransport = new DefaultChatTransport({ api: apiEndpoint });
   const { messages, sendMessage } = useChat({
@@ -24,6 +25,10 @@ export function ChatComponent({ apiEndpoint }: ChatComponentProps) {
 const hasInitialized = useRef(false);
 
 useEffect(() => {
+
+  if (notStart === true){
+    return
+  }
   if (!hasInitialized.current) {
     hasInitialized.current = true;
     sendMessage({text: "Hello! Start the conversation." });

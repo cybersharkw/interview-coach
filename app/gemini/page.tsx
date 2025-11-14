@@ -15,17 +15,24 @@ export default function gemini() {
           </div>
           <div className="grid grid-cols-3 gap-4">
             <Card 
-              onClick={() => router.push('./gemini/training')}
+              onClick={() => router.push('./gemini/training/softwareEngineering')}
               className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
             >
               <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">Software Engineering</CardTitle>
               <CardDescription className="text-sm text-gray-600 pt-2">This coach asks you questions especially for Software Engineering Topics</CardDescription>
             </Card>
             <Card 
-              onClick={() => router.push('./gemini/training')}
+              onClick={() => router.push('./gemini/training/bank')}
               className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
             >
-              <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">HR</CardTitle>
+              <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">Bank</CardTitle>
+              <CardDescription className="text-sm text-gray-600 pt-2">This coach asks you questions especially for Human-Resource Topics</CardDescription>
+            </Card>
+            <Card 
+              onClick={() => router.push('./gemini/training/gastro')}
+              className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
+            >
+              <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">Gastronomy</CardTitle>
               <CardDescription className="text-sm text-gray-600 pt-2">This coach asks you questions especially for Human-Resource Topics</CardDescription>
             </Card>
           </div>
@@ -37,17 +44,24 @@ export default function gemini() {
           </div>
           <div className="grid grid-cols-3 gap-4">
             <Card 
-              onClick={() => router.push('./gemini/reverseTraining')}
+              onClick={() => router.push('./gemini/reverse/softwareEngineering')}
               className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
             >
               <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">Software Engineering</CardTitle>
               <CardDescription className="text-sm text-gray-600 pt-2">This coach asks you questions especially for Software Engineering Topics</CardDescription>
             </Card>
             <Card 
-              onClick={() => router.push('./gemini/itcoach')}
+              onClick={() => router.push('./gemini/reverse/bank')}
               className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
             >
-              <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">HR</CardTitle>
+              <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">Bank</CardTitle>
+              <CardDescription className="text-sm text-gray-600 pt-2">This coach asks you questions especially for Human-Resource Topics</CardDescription>
+            </Card>
+            <Card 
+              onClick={() => router.push('./gemini/reverse/gastro')}
+              className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
+            >
+              <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">Gastronomy</CardTitle>
               <CardDescription className="text-sm text-gray-600 pt-2">This coach asks you questions especially for Human-Resource Topics</CardDescription>
             </Card>
           </div>
@@ -59,17 +73,24 @@ export default function gemini() {
           </div>
           <div className="grid grid-cols-3 gap-4">
             <Card 
-              onClick={() => router.push('./gemini/test')}
+              onClick={() => router.push('./gemini/test/softwareEngineering')}
               className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
             >
               <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">Software Engineering</CardTitle>
               <CardDescription className="text-sm text-gray-600 pt-2">This coach asks you questions especially for Software Engineering Topics</CardDescription>
             </Card>
             <Card 
-              onClick={() => router.push('./gemini/test')}
+              onClick={() => router.push('./gemini/test/bank')}
               className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
             >
-              <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">HR</CardTitle>
+              <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">Bank</CardTitle>
+              <CardDescription className="text-sm text-gray-600 pt-2">This coach asks you questions especially for Human-Resource Topics</CardDescription>
+            </Card>
+            <Card 
+              onClick={() => router.push('./gemini/test/gastro')}
+              className="bg-white border-2 border-black p-4 cursor-pointer hover:shadow-lg transition-shadow"
+            >
+              <CardTitle className="text-lg font-semibold mb-2 pb-2 border-b border-gray-300">Gastronomy</CardTitle>
               <CardDescription className="text-sm text-gray-600 pt-2">This coach asks you questions especially for Human-Resource Topics</CardDescription>
             </Card>
           </div>
