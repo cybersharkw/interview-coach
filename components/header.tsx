@@ -26,7 +26,7 @@ export function Header() {
             Gemini
           </Button>
           <Button variant="outline" onClick={() => router.push('/aws')}>
-            aws-Bedrock
+            Aws-nova
           </Button>
         </div>
 

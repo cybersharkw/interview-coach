@@ -11,16 +11,21 @@ export const maxDuration = 30;
 
 
 export async function POST(req: Request) {
-    const { messages }: { messages: UIMessage[] } = await req.json();
+   const { messages, model, temperature, topP, maxOutputTokens, frequencyPenalty, presencePenalty   } = await req.json();
 
     const result = streamText({
-        model: google("gemini-2.5-flash-lite"),
+        model: google(model),
         system: 
 
             `${promptReverse}` +
             `***${rules}***`
     ,
         messages: convertToModelMessages(messages),
+        temperature,
+        topP,
+        maxOutputTokens,
+        frequencyPenalty,
+        presencePenalty,
     });
 
     return result.toUIMessageStreamResponse();

@@ -7,8 +7,9 @@ import { Slider } from './ui/slider';
 import { Label } from './ui/label';
 import { Settings, X } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { useParams } from 'next/navigation';
+import { setMaxIdleHTTPParsers } from 'http';
 import { de } from 'zod/v4/locales';
+
 
 
 interface ChatComponentProps {
@@ -18,13 +19,12 @@ interface ChatComponentProps {
 
 }
 
-export function ChatComponent({ apiEndpoint, notStart}: ChatComponentProps) {
+export function ChatComponent({ apiEndpoint, notStart }: ChatComponentProps) {
   const [input, setInput] = useState('');
 
   //Settings
-  const [defaultSelect, setDefaultSelect] =useState("")
   const [showSettings, setShowSettings] = useState(true);
-  const [model, setModel] = useState(defaultSelect);
+  const [model, setModel] = useState("");
   const [temperature, setTemperature] = useState(0.7);
   const [maxTokens, setMaxTokens] = useState(2000);
   const [topP, setTopP] = useState(1);
@@ -33,7 +33,7 @@ export function ChatComponent({ apiEndpoint, notStart}: ChatComponentProps) {
   //Depending on Url different Models choosable
 
   const [company, setCompany] = useState("");
-  
+
 
   const customTransport = new DefaultChatTransport({ api: apiEndpoint });
   const { messages, sendMessage } = useChat({
@@ -42,36 +42,43 @@ export function ChatComponent({ apiEndpoint, notStart}: ChatComponentProps) {
 
   const hasInitialized = useRef(false);
 
-  useEffect(() => {
-    const currentURL = window.location.href;
-
-    if (currentURL.includes("openai")) {
-      setCompany("openai");
-      setDefaultSelect("gpt-4o")
-    } else if (currentURL.includes("gemini")) {
-      setCompany("gemini");
-      setDefaultSelect("gemini-2.5-flash-lite")
-    } else if (currentURL.includes("nova")) {
-      setCompany("nova");
-      setDefaultSelect("amazon.nova-lite-v1:0")
-    }
-
-    if (notStart === true) {
-      return
-    }
-    if (!hasInitialized.current) {
-      hasInitialized.current = true;
-      sendMessage({ text: "Hello! Start the conversation." });
-    }
-  }, []);
-
 
 useEffect(() => {
-  if (defaultSelect) {
-    setModel(defaultSelect);
+  if (apiEndpoint.includes("openai")) {
+    setCompany("openai");
+    setModel("gpt-4o")
+  } else if (apiEndpoint.includes("gemini")) {
+    setCompany("gemini");
+    setModel("gemini-2.5-flash-lite")
+  } else if (apiEndpoint.includes("aws")) {
+    setCompany("nova");
+    setModel("amazon.nova-pro-v1:0")
   }
-}, [defaultSelect]);
+}, [apiEndpoint]); 
 
+  useEffect(() => {
+   if (notStart === true) {
+        return
+      }
+
+      if (!hasInitialized.current && model) {
+        hasInitialized.current = true;
+        sendMessage({ text: "Hello! Start the conversation." }
+          ,
+          {
+            body: {
+              model,
+              temperature,
+              maxTokens,
+              topP,
+              frequencyPenalty,
+              presencePenalty
+            },
+          },
+        );
+      }
+
+  })
 
   return (
     <div className="flex w-full h-screen">
@@ -143,7 +150,7 @@ useEffect(() => {
           {/* Model*/}
           <div className="space-y-2">
             <Label>Model</Label>
-            <Select value={model} onValueChange={setModel} >
+            <Select value={model} onValueChange={setModel}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
