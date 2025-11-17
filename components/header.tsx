@@ -19,13 +19,13 @@ export function Header() {
 
         {/* Middle: Desktop Buttons */}
         <div className="hidden md:flex gap-4">
-          <Button variant="outline" onClick={() => router.push('./openai')}>
+          <Button variant="outline" onClick={() => router.push('/openai')}>
             Openai
           </Button>
-          <Button variant="outline" onClick={() => router.push('./gemini')}>
+          <Button variant="outline" onClick={() => router.push('/gemini')}>
             Gemini
           </Button>
-          <Button variant="outline" onClick={() => router.push('./aws')}>
+          <Button variant="outline" onClick={() => router.push('/aws')}>
             aws-Bedrock
           </Button>
         </div>
