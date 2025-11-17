@@ -8,6 +8,7 @@ import { Label } from './ui/label';
 import { Settings, X } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { useParams } from 'next/navigation';
+import { de } from 'zod/v4/locales';
 
 
 interface ChatComponentProps {
@@ -21,8 +22,9 @@ export function ChatComponent({ apiEndpoint, notStart}: ChatComponentProps) {
   const [input, setInput] = useState('');
 
   //Settings
+  const [defaultSelect, setDefaultSelect] =useState("")
   const [showSettings, setShowSettings] = useState(true);
-  const [model, setModel] = useState('');
+  const [model, setModel] = useState(defaultSelect);
   const [temperature, setTemperature] = useState(0.7);
   const [maxTokens, setMaxTokens] = useState(2000);
   const [topP, setTopP] = useState(1);
@@ -31,6 +33,7 @@ export function ChatComponent({ apiEndpoint, notStart}: ChatComponentProps) {
   //Depending on Url different Models choosable
 
   const [company, setCompany] = useState("");
+  
 
   const customTransport = new DefaultChatTransport({ api: apiEndpoint });
   const { messages, sendMessage } = useChat({
@@ -44,10 +47,13 @@ export function ChatComponent({ apiEndpoint, notStart}: ChatComponentProps) {
 
     if (currentURL.includes("openai")) {
       setCompany("openai");
+      setDefaultSelect("gpt-4o")
     } else if (currentURL.includes("gemini")) {
       setCompany("gemini");
+      setDefaultSelect("gemini-2.5-flash-lite")
     } else if (currentURL.includes("nova")) {
       setCompany("nova");
+      setDefaultSelect("amazon.nova-lite-v1:0")
     }
 
     if (notStart === true) {
@@ -58,6 +64,14 @@ export function ChatComponent({ apiEndpoint, notStart}: ChatComponentProps) {
       sendMessage({ text: "Hello! Start the conversation." });
     }
   }, []);
+
+
+useEffect(() => {
+  if (defaultSelect) {
+    setModel(defaultSelect);
+  }
+}, [defaultSelect]);
+
 
   return (
     <div className="flex w-full h-screen">
@@ -92,6 +106,7 @@ export function ChatComponent({ apiEndpoint, notStart}: ChatComponentProps) {
             sendMessage({ text: input },
               {
                 body: {
+                  model,
                   temperature,
                   maxTokens,
                   topP,
@@ -128,7 +143,7 @@ export function ChatComponent({ apiEndpoint, notStart}: ChatComponentProps) {
           {/* Model*/}
           <div className="space-y-2">
             <Label>Model</Label>
-            <Select value={model} onValueChange={setModel}>
+            <Select value={model} onValueChange={setModel} >
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
