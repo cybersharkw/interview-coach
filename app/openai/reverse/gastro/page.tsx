@@ -1,0 +1,11 @@
+import { ChatComponent } from "@/components/chat";
+
+export default function reverseTraining() {
+  return (
+    <div>
+      <ChatComponent  apiEndpoint="/api/chat/openai/reverse/gastro" notStart={true}/>
+    </div>
+  
+  
+  )
+}

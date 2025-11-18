@@ -7,8 +7,8 @@ import { Slider } from './ui/slider';
 import { Label } from './ui/label';
 import { Settings, X } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { setMaxIdleHTTPParsers } from 'http';
-import { de } from 'zod/v4/locales';
+
+
 
 
 

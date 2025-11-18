@@ -29,25 +29,6 @@ export function Header() {
             Aws-nova
           </Button>
         </div>
-
-        {/* Right: Mobile Menu */}
-        <div className="flex md:hidden items-center">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => alert("Chat Bot clicked!")}>
-                Chat Bot
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => alert("Image Bot clicked!")}>
-                Image Bot
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
       </div>
     </header>
   );
