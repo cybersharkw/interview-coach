@@ -31,6 +31,8 @@ The platform allows you to experiment with different LLMs, understand their uniq
 ### API-Key
 Create an .env file and fill it out like the .evn.example. 
 
+⚠️ Very important set the Api's which you want to use on true, otherwise it wan't work. 
+
 ### install dependencies
 
 ```
