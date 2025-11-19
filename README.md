@@ -48,6 +48,11 @@ bun run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+
+### My Version
+Open [https://main.dmu7sjsgft01v.amplifyapp.com/] with your browser to see my sample
+
+
 Happy Testing
 
 
