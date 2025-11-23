@@ -41,49 +41,58 @@ export function ChatComponent({ apiEndpoint, notStart }: ChatComponentProps) {
   });
 
   const hasInitialized = useRef(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
-useEffect(() => {
-  if (apiEndpoint.includes("openai")) {
-    setCompany("openai");
-    setModel("gpt-4o")
-  } else if (apiEndpoint.includes("gemini")) {
-    setCompany("gemini");
-    setModel("gemini-2.5-flash-lite")
-  } else if (apiEndpoint.includes("aws")) {
-    setCompany("nova");
-    setModel("amazon.nova-pro-v1:0")
-  }
-}, [apiEndpoint]); 
 
   useEffect(() => {
-   if (notStart === true) {
-        return
-      }
+    if (apiEndpoint.includes("openai")) {
+      setCompany("openai");
+      setModel("gpt-4o")
+    } else if (apiEndpoint.includes("gemini")) {
+      setCompany("gemini");
+      setModel("gemini-2.5-flash-lite")
+    } else if (apiEndpoint.includes("aws")) {
+      setCompany("nova");
+      setModel("amazon.nova-pro-v1:0")
+    }
+  }, [apiEndpoint]);
 
-      if (!hasInitialized.current && model) {
-        hasInitialized.current = true;
-        sendMessage({ text: "Hello! Start the conversation." }
-          ,
-          {
-            body: {
-              model,
-              temperature,
-              maxTokens,
-              topP,
-              frequencyPenalty,
-              presencePenalty
-            },
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  useEffect(() => {
+    if (notStart === true) {
+      return
+    }
+
+    if (!hasInitialized.current && model) {
+      hasInitialized.current = true;
+      sendMessage({ text: "Hello! Start the conversation." }
+        ,
+        {
+          body: {
+            model,
+            temperature,
+            maxTokens,
+            topP,
+            frequencyPenalty,
+            presencePenalty
           },
-        );
-      }
+        },
+      );
+    }
 
   })
 
   return (
     <div className="flex w-full h-screen">
       {/* Chat Area - Keep original styling */}
-      <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
+      <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch pb-20">
         <div className="flex justify-end mb-4">
           <Button
             variant="outline"
@@ -94,18 +103,21 @@ useEffect(() => {
           </Button>
         </div>
 
-        {messages.map(message => (
-          <div key={message.id} className="whitespace-pre-wrap">
-            {message.role === 'user' ? 'User: ' : 'AI: '}
-            {message.parts.map((part, i) => {
-              switch (part.type) {
-                case 'text':
-                  return <div key={`${message.id}-${i}`}>{part.text}</div>;
-              }
-            })}
-            <hr />
-          </div>
-        ))}
+        <div className="flex-1 overflow-y-auto pb-20">
+          {messages.map(message => (
+            <div key={message.id} className="whitespace-pre-wrap">
+              {message.role === 'user' ? 'User: ' : 'AI: '}
+              {message.parts.map((part, i) => {
+                switch (part.type) {
+                  case 'text':
+                    return <div key={`${message.id}-${i}`}>{part.text}</div>;
+                }
+              })}
+              <hr />
+            </div>
+          ))}
+          <div ref={messagesEndRef} />
+        </div>
 
         <form
           onSubmit={e => {

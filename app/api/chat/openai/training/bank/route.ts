@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 
             `${coachPerson}` +
 
-            `Your Questions are specific in following domain:${domain[1]}. But your Questionset must include general Questions. You ask maximal 10 Questions in each Round. Each Question has to start with the number. ` +
+            `Your Questions are specific in following domain:${domain[1]}. But your Questionset must include general Questions. You ask maximal 2 Questions in each Round. Each Question has to start with the number. ` +
 
 
             
